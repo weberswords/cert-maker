@@ -1,0 +1,25 @@
+@import "../Button/style.css";
+
+p, button, div, dialog {
+    text-align: center;
+    margin: 10px;
+    align-self: center;
+}
+
+input, label {
+    display: block;
+    align-self: center;
+    padding: 6px 16px;
+    font-family: Impact;
+}
+
+input {
+    width: 90%;
+    height: 33%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.form-group {
+    align-self: center;
+}

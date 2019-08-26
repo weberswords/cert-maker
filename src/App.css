@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 10px;
+  color: white;
+}
+
+text {
+  color: black;
+}
+
+.container {
+  margin: 20px;
+  padding: 20px;
+}
+
+p, button, div {
+  text-align: center;
+}

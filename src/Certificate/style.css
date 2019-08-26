@@ -1,0 +1,7 @@
+.hidden {
+    display: none;
+}
+
+img, canvas {
+    width: 75vw;
+}
