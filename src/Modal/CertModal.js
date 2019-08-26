@@ -7,25 +7,44 @@ class CertModal extends Component {
     constructor(props) {
         super(props);
         this.closeModal = this.closeModal.bind(this);
+        this.getUpdatedCertificate = this.getUpdatedCertificate.bind(this);
         this.state = {
             name: "",
             course: 0,
+            url: "",
             modalOpen: true
         }
     }
-
-    courses = {
-        0: "",
-        1: "Feedback",
-        2: "Poetry",
-        3: "Design Thinking",
-        4: "This title is really long and I don't think it has to be"
-    };
 
     closeModal() {
         this.setState({
             modalOpen: false
         })
+    }
+
+    getUpdatedCertificate() {
+        const image = fetch('https://ayufzwz613.execute-api.us-east-1.amazonaws.com/prod', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer kXRj4e6hZJ9ZyGnxwPUtx7VyR3ASruXj1Dw5R1SX'
+            },
+            body: JSON.stringify({
+                name: 'Persony McPerson',
+                course: '1',
+            })
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Something went wrong.");
+            }
+        });
+        this.setState({
+            url: image
+        });
+        this.closeModal();
     }
 
     render() {
@@ -46,10 +65,11 @@ class CertModal extends Component {
                             placeholder="Soraya Jones" />
                     </div>
                     <button
-                        className="btn btn-primary">Ok
+                        onClick={this.getUpdatedCertificate}
+                    >Ok
                     </button>
             </Dialog>
-            <Certificate/>
+            <Certificate url={this.state.url}/>
             </Fragment>
         );
     }

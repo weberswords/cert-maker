@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import './style.css';
+import Nav from "../App";
 
 class Certificate extends Component {
 
@@ -9,13 +10,12 @@ class Certificate extends Component {
             width: 0,
             height: 0
         }
-
     }
 
     componentDidMount() {
-        const canvas = this.refs.canvas;
+        const canvas = this.canvas;
         const context = canvas.getContext("2d");
-        const image = this.refs.image;
+        const image = this.image;
 
         image.onload = () => {
             this.setState({
@@ -32,22 +32,25 @@ class Certificate extends Component {
 
     render() {
         return (
-            <div className="certificate">
-                <div className="container" id="container">
-                    <img
-                        alt="virgil con certificate"
-                        className="hidden"
-                        src="certificate.png"
-                        ref="image"
-                    />
-                    <canvas
-                        id="canvas"
-                        width={this.state.width}
-                        height={this.state.height}
-                        ref="canvas"
-                    />
+            <Fragment>
+                <Nav url=""/>
+                <div className="certificate">
+                    <div className="container" id="container">
+                        <img
+                            alt="virgil con certificate"
+                            className="hidden"
+                            src="../../public/certificate.png"
+                            ref="image"
+                        />
+                        <canvas
+                            id="canvas"
+                            width={this.state.width}
+                            height={this.state.height}
+                            ref="canvas"
+                        />
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
                 }
