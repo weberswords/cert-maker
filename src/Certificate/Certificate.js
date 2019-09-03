@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import './style.css';
-import Nav from "../App";
+import Nav from "../Nav/Nav";
 
 class Certificate extends Component {
 
@@ -8,51 +8,27 @@ class Certificate extends Component {
         super(props);
         this.state = {
             width: 0,
-            height: 0
-        }
-    }
-
-    componentDidMount() {
-        const canvas = this.canvas;
-        const context = canvas.getContext("2d");
-        const image = this.image;
-
-        image.onload = () => {
-            this.setState({
-               width: image.width,
-               height: image.height
-            });
-            context.font = 'italic 100pt Calibri';
-            context.fillStyle = "black";
-            context.drawImage(image, 0, 0);
-            context.fillText("some name", 1800, 1500);
-            context.fillText("some course", 1900, 2000);
+            height: 0,
+            url: "certificate.png"
         }
     }
 
     render() {
         return (
             <Fragment>
-                <Nav url=""/>
+                <Nav url={this.state.url}/>
                 <div className="certificate">
                     <div className="container" id="container">
                         <img
                             alt="virgil con certificate"
-                            className="hidden"
-                            src="../../public/certificate.png"
+                            src={this.state.url}
                             ref="image"
-                        />
-                        <canvas
-                            id="canvas"
-                            width={this.state.width}
-                            height={this.state.height}
-                            ref="canvas"
                         />
                     </div>
                 </div>
             </Fragment>
         );
     }
-                }
+}
 
 export default Certificate;

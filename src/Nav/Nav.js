@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from "../Button/Button";
+import Button from "@material-ui/core/Button";
 
 class Nav extends Component {
 
@@ -8,7 +8,11 @@ class Nav extends Component {
             <div className="nav">
                 <div className="container" id="nav">
                     <Button
-                    url=""/>
+                        download="VirgilCon2019.png"
+                        id="certificate"
+                        size="medium">
+                        Download certificate
+                    </Button>
                 </div>
             </div>
         );

@@ -1,6 +1,4 @@
-@import "../Button/style.css";
-
-p, button, div, dialog {
+p, div, dialog {
     text-align: center;
     margin: 10px;
     align-self: center;
@@ -22,4 +20,25 @@ input {
 
 .form-group {
     align-self: center;
+}
+
+.custom-button {
+    width: 33%;
+    align-self: center;
+    -moz-box-shadow: 0 0 0 2px #9fb4f2;
+    -webkit-box-shadow: 0 0 0 2px #9fb4f2;
+    box-shadow: 0 0 0 2px #9fb4f2;
+    background-color:#7892c2;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:1px solid #4e6096;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Impact, sans-serif;
+    font-size:19px;
+    padding:6px 16px;
+    text-decoration:none;
+    text-shadow:0 1px 18px #283966;
 }
