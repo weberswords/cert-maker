@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react';
 import Certificate from "../Certificate/Certificate";
 import Dialog from '@material-ui/core/Dialog';
 import style from './style.css';
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { createCanvas } from 'canvas';
+import data from './courses';
 
 class CertModal extends Component {
     constructor(props) {
@@ -28,15 +29,7 @@ class CertModal extends Component {
     }
 
     getCourseName() {
-        const courses = {
-            "1": "Feedback",
-            "2": "Poetry",
-            "3": "Something",
-            "4": "Other things",
-            "5": "Chicken",
-            "6": "Art"
-        };
-        return courses[this.props.match.params.id];
+        return data[this.props.match.params.id];
     }
 
     updateInputValue(event) {
