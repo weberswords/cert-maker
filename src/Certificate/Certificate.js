@@ -16,12 +16,13 @@ class Certificate extends Component {
     render() {
         return (
             <Fragment>
-                <Nav url={this.state.url}/>
+                <Nav url={this.props.url}/>
                 <div className="certificate">
                     <div className="container" id="container">
                         <img
                             alt="virgil con certificate"
-                            src={this.state.url}
+                            id="certificate"
+                            src={this.props.url}
                             ref="image"
                         />
                     </div>

@@ -15,7 +15,7 @@ class CertModal extends Component {
             name: "",
             course: this.getCourseName(),
             courseNumber: this.props.match.params.id,
-            url: "",
+            url: "certificate.png",
             modalOpen: true
         }
     }
