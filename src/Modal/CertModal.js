@@ -48,25 +48,27 @@ class CertModal extends Component {
         image.src = file;
         console.log(image);
         image.onload = () => {
-            console.log("Image loaded");
             this.fillCertificate(context, image, name, course);
             let newUrl = canvas.toDataURL();
-            console.log(`The new url is: ${newUrl}`);
             this.setState({
                 url: newUrl
             });
-            console.log("Closing modal....");
             this.closeModal();
         };
     }
 
+    centerText(context, text, x, y, maxWidth) {
+        let nameWidth = context.measureText(text).width;
+        let newX = (maxWidth - nameWidth) / 2;
+        context.fillText(text, newX, y);
+    }
+
     fillCertificate(context, image, name, course) {
         context.drawImage(image, 0, 0);
-        context.font = 'italic 100pt Calibri';
+        context.font = 'italic 75pt Calibri';
         context.fillStyle = "black";
-        context.textAlign = "start";
-        context.fillText(name, 1600, 1500);
-        context.fillText(course, 1500, 2000);
+        this.centerText(context, name, 950, 1515, image.width);
+        this.centerText(context, course, 1250, 2035, image.width);
     }
 
     render() {
