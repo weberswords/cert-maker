@@ -7,9 +7,8 @@ class Nav extends Component {
         return (
             <div className="nav">
                 <div className="container" id="nav">
-                    <a href={this.props.url} download>
+                    <a href={this.props.url} download="VirgilCon2019.png">
                         <Button
-                            download="VirgilCon2019.png"
                             id="certificate"
                             size="medium">
                             Download certificate

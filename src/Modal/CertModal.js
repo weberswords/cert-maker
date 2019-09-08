@@ -64,8 +64,9 @@ class CertModal extends Component {
         context.drawImage(image, 0, 0);
         context.font = 'italic 100pt Calibri';
         context.fillStyle = "black";
-        context.fillText(name, 1800, 1500);
-        context.fillText(course, 1900, 2000);
+        context.textAlign = "start";
+        context.fillText(name, 1600, 1500);
+        context.fillText(course, 1500, 2000);
     }
 
     render() {
