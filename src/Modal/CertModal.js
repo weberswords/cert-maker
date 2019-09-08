@@ -3,6 +3,7 @@ import Certificate from "../Certificate/Certificate";
 import Dialog from '@material-ui/core/Dialog';
 import style from './style.css';
 import {Button} from "@material-ui/core";
+import { createCanvas } from 'canvas';
 
 class CertModal extends Component {
     constructor(props) {
@@ -45,25 +46,33 @@ class CertModal extends Component {
     }
 
     getUpdatedCertificate() {
-        console.log(`Setting state...${this.state.name} and ${this.state.course}`);
-        console.log("Certificate being fetched...");
-        const result = fetch(
-                'https://ayufzwz613.execute-api.us-east-1.amazonaws.com/prod', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer kXRj4e6hZJ9ZyGnxwPUtx7VyR3ASruXj1Dw5R1SX'
-                },
-                body: JSON.stringify({
-                    name: this.state.name,
-                    course: this.state.course
-                })
-            }).then( result => result.ok ? result.json() : Promise.reject() )
-            .then (data => console.log(data));
-        console.log(`Result: ${result}`);
-        console.log("Closing modal....");
-        this.closeModal();
+        let name = this.state.name;
+        let course = this.state.course;
+        let file = "certificate.png";
+        let canvas = createCanvas(4266, 3200);
+        let context = canvas.getContext('2d');
+        let image = new Image();
+        image.src = file;
+        console.log(image);
+        image.onload = () => {
+            console.log("Image loaded");
+            this.fillCertificate(context, image, name, course);
+            let newUrl = canvas.toDataURL();
+            console.log(`The new url is: ${newUrl}`);
+            this.setState({
+                url: newUrl
+            });
+            console.log("Closing modal....");
+            this.closeModal();
+        };
+    }
+
+    fillCertificate(context, image, name, course) {
+        context.drawImage(image, 0, 0);
+        context.font = 'italic 100pt Calibri';
+        context.fillStyle = "black";
+        context.fillText(name, 1800, 1500);
+        context.fillText(course, 1900, 2000);
     }
 
     render() {
@@ -88,6 +97,7 @@ class CertModal extends Component {
                     <Button
                         className={style["custom-button"]}
                         onClick={this.getUpdatedCertificate}
+                        onKeyPress={this.getUpdatedCertificate}
                     >Ok
                     </Button>
             </Dialog>
