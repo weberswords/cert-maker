@@ -16,7 +16,7 @@ class CertModal extends Component {
         this.state = {
             name: "",
             course: this.getCourseName(),
-            courseNumber: this.props.match.params.id,
+            courseNumber: this.props.match.params.id || 0,
             url: "certificate.png",
             modalOpen: true
         }
@@ -46,7 +46,6 @@ class CertModal extends Component {
         let context = canvas.getContext('2d');
         let image = new Image();
         image.src = file;
-        console.log(image);
         image.onload = () => {
             this.fillCertificate(context, image, name, course);
             let newUrl = canvas.toDataURL();
@@ -93,7 +92,6 @@ class CertModal extends Component {
                     <Button
                         className={style["custom-button"]}
                         onClick={this.getUpdatedCertificate}
-                        onKeyPress={this.getUpdatedCertificate}
                     >Ok
                     </Button>
             </Dialog>
